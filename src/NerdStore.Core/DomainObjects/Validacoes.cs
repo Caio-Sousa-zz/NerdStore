@@ -2,6 +2,9 @@
 
 namespace NerdStore.Core.DomainObjects
 {
+    /// <summary>
+    /// Assertion Concern.
+    /// </summary>
     public class Validacoes
     {
         public static void ValidarSeIgual(object object1, object object2, string mensagem)
