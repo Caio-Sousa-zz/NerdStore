@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace NerdStore.Catalogo.Application.DTO
+namespace NerdStore.Catalogo.Application.ViewModels
 {
-    public class ProdutoDto
+    public class ProdutoViewModel
     {
         [Key]
         public Guid Id { get; set; }
@@ -46,6 +46,6 @@ namespace NerdStore.Catalogo.Application.DTO
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public int Profundidade { get; set; }
 
-        public IEnumerable<CategoriaDto> Categorias { get; set; }
+        public IEnumerable<CategoriaViewModel> Categorias { get; set; }
     }
 }

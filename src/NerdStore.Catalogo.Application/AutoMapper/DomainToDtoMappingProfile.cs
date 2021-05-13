@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using NerdStore.Catalogo.Application.DTO;
+using NerdStore.Catalogo.Application.ViewModels;
 using NerdStore.Catalogo.Domain;
 
 namespace NerdStore.Catalogo.Application.AutoMapper
@@ -8,12 +8,12 @@ namespace NerdStore.Catalogo.Application.AutoMapper
     {
         public DomainToDtoMappingProfile()
         {
-            CreateMap<Produto, ProdutoDto>()
+            CreateMap<Produto, ProdutoViewModel>()
                 .ForMember(d => d.Largura, o => o.MapFrom(s => s.Dimensoes.Largura))
                 .ForMember(d => d.Altura, o => o.MapFrom(s => s.Dimensoes.Altura))
                 .ForMember(d => d.Profundidade, o => o.MapFrom(s => s.Dimensoes.Profundidade));
 
-            CreateMap<Categoria, CategoriaDto>();
+            CreateMap<Categoria, CategoriaViewModel>();
         }
     }
 }
