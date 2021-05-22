@@ -22,7 +22,7 @@ namespace NerdStore.Vendas.Domain
         // EF Rel.
         public ICollection<Pedido> Pedidos { get; set; }
 
-        internal ValidationResult ValidarSeAplicavel()
+        internal FluentValidation.Results.ValidationResult ValidarSeAplicavel()
         {
             return new VoucherAplicavelValidation().Validate(this);
         }
@@ -55,5 +55,4 @@ namespace NerdStore.Vendas.Domain
             return dataValidade >= DateTime.Now;
         }
     }
-}
 }
