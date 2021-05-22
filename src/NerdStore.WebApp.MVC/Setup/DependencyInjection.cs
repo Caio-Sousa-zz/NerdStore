@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Nerdstore.Vendas.Application.Commands;
 using NerdStore.Catalogo.Application.Interface;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Catalogo.Data;
@@ -8,6 +9,7 @@ using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Bus;
+
 
 namespace NerdStore.WebApp.MVC.Setup
 {
@@ -25,6 +27,9 @@ namespace NerdStore.WebApp.MVC.Setup
             services.AddScoped<CatalogoContext>();
 
             services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
+            
+            // Vendas
+            services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
         }
     }
 }
