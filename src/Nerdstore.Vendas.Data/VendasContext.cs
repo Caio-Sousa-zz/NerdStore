@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NerdStore.Core.Bus;
 using NerdStore.Core.Data;
 using NerdStore.Core.Messages;
 using NerdStore.Vendas.Domain;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Nerdstore.Vendas.Data
 {
@@ -15,6 +13,10 @@ namespace Nerdstore.Vendas.Data
     {
         private readonly IMediatorHandler _mediatorHandler;
 
+        public VendasContext(DbContextOptions<VendasContext> options) : base(options)
+        {
+
+        }
 
         public VendasContext(DbContextOptions<VendasContext> options, IMediatorHandler mediatorHandler)
             : base(options)
@@ -55,7 +57,7 @@ namespace Nerdstore.Vendas.Data
                 .SelectMany(e => e.GetProperties()
                     .Where(p => p.ClrType == typeof(string))))
             {
-                //property.SetColumnType("varchar(100)");
+                property.SetColumnType("varchar(100)");
             }
 
             modelBuilder.Ignore<Event>();
@@ -64,7 +66,7 @@ namespace Nerdstore.Vendas.Data
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
-            //modelBuilder.HasSequence<int>("MinhaSequencia").StartsAt(1000).IncrementsBy(1);
+            modelBuilder.HasSequence<int>("MinhaSequencia").StartsAt(1000).IncrementsBy(1);
 
             base.OnModelCreating(modelBuilder);
         }

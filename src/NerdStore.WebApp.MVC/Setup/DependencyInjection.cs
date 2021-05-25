@@ -9,6 +9,8 @@ using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Bus;
+using Nerdstore.Vendas.Data;
+using NerdStore.Vendas.Data.Repository;
 using NerdStore.Vendas.Domain;
 
 
@@ -18,7 +20,7 @@ namespace NerdStore.WebApp.MVC.Setup
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            // Domain Bus (Mediator)
+            // Mediator
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             // Catalogo
@@ -31,7 +33,22 @@ namespace NerdStore.WebApp.MVC.Setup
 
             // Vendas
             services.AddScoped<IPedidoRepository, PedidoRepository>();
+            //services.AddScoped<IPedidoQueries, PedidoQueries>();
+            services.AddScoped<VendasContext>();
+
             services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<RemoverItemPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<AplicarVoucherPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<IniciarPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<FinalizarPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<CancelarProcessamentoPedidoCommand, bool>, PedidoCommandHandler>();
+            //services.AddScoped<IRequestHandler<CancelarProcessamentoPedidoEstornarEstoqueCommand, bool>, PedidoCommandHandler>();
+
+            //services.AddScoped<INotificationHandler<PedidoRascunhoIniciadoEvent>, PedidoEventHandler>();
+            //services.AddScoped<INotificationHandler<PedidoEstoqueRejeitadoEvent>, PedidoEventHandler>();
+            //services.AddScoped<INotificationHandler<PedidoPagamentoRealizadoEvent>, PedidoEventHandler>();
+            //services.AddScoped<INotificationHandler<PedidoPagamentoRecusadoEvent>, PedidoEventHandler>();
         }
     }
 }

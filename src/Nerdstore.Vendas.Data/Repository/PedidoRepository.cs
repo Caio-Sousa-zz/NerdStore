@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NerdStore.Core.Data;
 using NerdStore.Vendas.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Nerdstore.Vendas.Data;
 
-namespace Nerdstore.Vendas.Data
+namespace NerdStore.Vendas.Data.Repository
 {
     public class PedidoRepository : IPedidoRepository
     {

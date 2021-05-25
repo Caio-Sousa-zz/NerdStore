@@ -1,3 +1,3 @@
-﻿Add-Migration Initial -Context CatalogoContext
+﻿Add-Migration Initial -Context VendasContext
 
-update-database -Context CatalogoContext
+update-database -Context VendasContext
