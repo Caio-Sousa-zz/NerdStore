@@ -8,6 +8,8 @@ using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Bus;
+using NerdStore.Vendas.Data.Repository;
+using NerdStore.Vendas.Domain;
 
 
 namespace NerdStore.WebApp.MVC.Setup
@@ -28,7 +30,7 @@ namespace NerdStore.WebApp.MVC.Setup
             services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
 
             // Vendas
-           // services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
             //services.AddScoped<IPedidoQueries, PedidoQueries>();
            // services.AddScoped<VendasContext>();
 
