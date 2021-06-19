@@ -8,6 +8,8 @@ using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Bus;
+using Nerdstore.Vendas.Application.Commands;
+using Nerdstore.Vendas.Data;
 using NerdStore.Vendas.Data.Repository;
 using NerdStore.Vendas.Domain;
 
@@ -32,10 +34,9 @@ namespace NerdStore.WebApp.MVC.Setup
             // Vendas
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             //services.AddScoped<IPedidoQueries, PedidoQueries>();
-           // services.AddScoped<VendasContext>();
-
-           // services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
-           // services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
+            services.AddScoped<VendasContext>();
+            services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
+           
             //services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, PedidoCommandHandler>();
             //services.AddScoped<IRequestHandler<RemoverItemPedidoCommand, bool>, PedidoCommandHandler>();
             //services.AddScoped<IRequestHandler<AplicarVoucherPedidoCommand, bool>, PedidoCommandHandler>();
