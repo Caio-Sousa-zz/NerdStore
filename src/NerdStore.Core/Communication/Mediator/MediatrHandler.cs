@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using System.Threading.Tasks;
+using MediatR;
 using NerdStore.Core.Messages;
-using System.Threading.Tasks;
 
-namespace NerdStore.Core.Bus
+namespace NerdStore.Core.Communication.Mediator
 {
     public class MediatorHandler : IMediatorHandler
     {

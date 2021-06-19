@@ -1,7 +1,7 @@
-﻿using NerdStore.Core.Bus;
-using NerdStore.Core.DomainObjects;
+﻿using NerdStore.Core.DomainObjects;
 using System.Linq;
 using System.Threading.Tasks;
+using NerdStore.Core.Communication.Mediator;
 
 namespace Nerdstore.Vendas.Data
 {

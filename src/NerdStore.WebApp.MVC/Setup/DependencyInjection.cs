@@ -1,16 +1,16 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using NerdStore.Catalogo.Application.Interface;
+using Nerdstore.Vendas.Application.Commands;
+using Nerdstore.Vendas.Data;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Catalogo.Data;
 using NerdStore.Catalogo.Data.Repository;
 using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
-using NerdStore.Core.Bus;
-using Nerdstore.Vendas.Application.Commands;
-using Nerdstore.Vendas.Data;
-using NerdStore.Vendas.Data.Repository;
+using NerdStore.Core.Communication.Mediator;
+using NerdStore.Core.Messages.CommonMessages.Notifications;
+using Nerdstore.Vendas.Data.Repository;
 using NerdStore.Vendas.Domain;
 
 
@@ -23,6 +23,9 @@ namespace NerdStore.WebApp.MVC.Setup
             // Mediator
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
+            // Notifiations
+            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+            
             // Catalogo
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
