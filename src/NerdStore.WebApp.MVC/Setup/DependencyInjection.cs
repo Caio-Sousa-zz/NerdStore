@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Nerdstore.Vendas.Application.Commands;
 using NerdStore.Catalogo.Application.Interface;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Catalogo.Data;
@@ -9,9 +8,6 @@ using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Bus;
-using Nerdstore.Vendas.Data;
-using NerdStore.Vendas.Data.Repository;
-using NerdStore.Vendas.Domain;
 
 
 namespace NerdStore.WebApp.MVC.Setup
@@ -32,11 +28,12 @@ namespace NerdStore.WebApp.MVC.Setup
             services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
 
             // Vendas
-            services.AddScoped<IPedidoRepository, PedidoRepository>();
+           // services.AddScoped<IPedidoRepository, PedidoRepository>();
             //services.AddScoped<IPedidoQueries, PedidoQueries>();
-            services.AddScoped<VendasContext>();
+           // services.AddScoped<VendasContext>();
 
-            services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
+           // services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
+           // services.AddScoped<IRequestHandler<AdicionarItemPedidoCommand, bool>, PedidoCommandHandler>();
             //services.AddScoped<IRequestHandler<AtualizarItemPedidoCommand, bool>, PedidoCommandHandler>();
             //services.AddScoped<IRequestHandler<RemoverItemPedidoCommand, bool>, PedidoCommandHandler>();
             //services.AddScoped<IRequestHandler<AplicarVoucherPedidoCommand, bool>, PedidoCommandHandler>();
