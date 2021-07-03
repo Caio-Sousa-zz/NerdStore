@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nerdstore.Vendas.Application.Commands;
 using Nerdstore.Vendas.Data;
+using Nerdstore.Vendas.Data.Repository;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Catalogo.Data;
 using NerdStore.Catalogo.Data.Repository;
@@ -10,7 +11,6 @@ using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
-using Nerdstore.Vendas.Data.Repository;
 using NerdStore.Vendas.Domain;
 
 

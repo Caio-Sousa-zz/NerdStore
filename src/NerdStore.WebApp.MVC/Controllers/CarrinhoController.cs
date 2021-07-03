@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using MediatR;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Core.Communication.Mediator;
+using NerdStore.Core.Messages.CommonMessages.Notifications;
 using Nerdstore.Vendas.Application.Commands;
+using ControllerBase = NerdStore.WebApp.MVC.Controllers.Base.ControllerBase;
 
 namespace NerdStore.WebApp.MVC.Controllers
 {
     public class CarrinhoController : ControllerBase
     {
-        private IProdutoAppService _protudtoAppService;
-        private IMediatorHandler _mediatorHandler;
+        private readonly IProdutoAppService _protudtoAppService;
+        private readonly IMediatorHandler _mediatorHandler;
 
-        public CarrinhoController(IProdutoAppService protudtoAppService,
-                                  IMediatorHandler mediatorHandler)
+        public CarrinhoController(INotificationHandler<DomainNotification> notification,
+                                  IProdutoAppService protudtoAppService,
+                                  IMediatorHandler mediatorHandler) : base(notification, mediatorHandler)
         {
             _protudtoAppService = protudtoAppService;
             _mediatorHandler = mediatorHandler;
@@ -40,14 +44,16 @@ namespace NerdStore.WebApp.MVC.Controllers
             }
 
             var command = new AdicionarItemPedidoCommand(ClientId, produto.Id, produto.Nome, quantidade, produto.Valor);
-
             await _mediatorHandler.Enviarcommando(command);
+            
+            if (OperacaoValida())
+            {
+                return RedirectToAction("Index");
+            }
 
             TempData["Erro"] = "Produto indisponível";
 
             return RedirectToAction("ProdutoDetalhe", "Vitrine", new { id });
-
-            return View();
         }
     }
 }
