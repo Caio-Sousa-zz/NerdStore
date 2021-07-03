@@ -1,8 +1,10 @@
-﻿using System;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using MediatR;
 
 namespace NerdStore.WebApp.MVC.Controllers.Base
 {
@@ -19,6 +21,11 @@ namespace NerdStore.WebApp.MVC.Controllers.Base
         }
 
         protected bool OperacaoValida() => !_notification.TemNotificacao();
+        
+        protected IEnumerable<string> ObterMensagemErro()
+        {
+            return _notification.ObterNotificacoes().Select(c => c.Value).ToList();
+        }
 
         protected void NotificarError(string codigo, string mensagem)
         {
