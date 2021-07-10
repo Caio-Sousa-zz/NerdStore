@@ -3,17 +3,18 @@ using NerdStore.Core.Messages;
 
 namespace Nerdstore.Vendas.Application.Events
 {
-    public class PedidoRascunhoIniciadoEvent: Event
+    public class PedidoAtualizadoEvent : Event
     {
         public Guid ClientId { get; }
-
         public Guid PedidoId { get; }
+        public decimal ValorTotal { get; }
 
-        public PedidoRascunhoIniciadoEvent(Guid clienteId, Guid pedidoId)
+        public PedidoAtualizadoEvent(Guid clientId, Guid pedidoId, decimal valorTotal)
         {
             AggregateId = pedidoId;
-            ClientId = clienteId;
+            ClientId = clientId;
             PedidoId = pedidoId;
+            ValorTotal = valorTotal;    
         }
     }
 }
