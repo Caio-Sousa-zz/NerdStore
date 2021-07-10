@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
+using Nerdstore.Vendas.Application.Events;
 
 namespace Nerdstore.Vendas.Application.Commands
 {
@@ -30,14 +31,16 @@ namespace Nerdstore.Vendas.Application.Commands
             if (pedido == null)
             {
                 pedido = Pedido.PedidoFactory.NovoPedidoRascunho(message.ClienteId);
+
                 pedido.AdicionarItem(pedidoItem);
 
                 _pedidoRepository.Adicionar(pedido);
+
+                pedido.AdicionarEvento(new PedidoRascunhoIniciadoEvent(message.ClienteId, message.ProdutoId));
             }
             else
             {
                 var pedidoItemExistente = pedido.PedidoItemExistente(pedidoItem);
-
                 pedido.AdicionarItem(pedidoItem);
 
                 if (pedidoItemExistente)
