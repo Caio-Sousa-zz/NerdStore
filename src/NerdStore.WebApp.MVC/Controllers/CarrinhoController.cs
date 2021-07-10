@@ -6,33 +6,38 @@ using NerdStore.Catalogo.Application.Services;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
 using Nerdstore.Vendas.Application.Commands;
+using NerdStore.Vendas.Application.Queries;
 using ControllerBase = NerdStore.WebApp.MVC.Controllers.Base.ControllerBase;
 
 namespace NerdStore.WebApp.MVC.Controllers
 {
     public class CarrinhoController : ControllerBase
     {
-        private readonly IProdutoAppService _protudtoAppService;
+        private readonly IProdutoAppService _produtoAppService;
         private readonly IMediatorHandler _mediatorHandler;
+        private readonly IPedidoQueries _pedidoQueries;
 
-        public CarrinhoController(INotificationHandler<DomainNotification> notification,
-                                  IProdutoAppService protudtoAppService,
-                                  IMediatorHandler mediatorHandler) : base(notification, mediatorHandler)
+        public CarrinhoController(INotificationHandler<DomainNotification> notification, 
+                                  IMediatorHandler mediatorHandler, 
+                                  IProdutoAppService produtoAppService, 
+                                  IPedidoQueries pedidoQueries) : base(notification, mediatorHandler)
         {
-            _protudtoAppService = protudtoAppService;
+            _produtoAppService = produtoAppService;
             _mediatorHandler = mediatorHandler;
+            _pedidoQueries = pedidoQueries;
         }
 
-        public IActionResult Index()
+        [Route("meu-carrinho")]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _pedidoQueries.ObterCarrinhoCliente(ClientId));
         }
 
         [HttpPost]
         [Route("meu-carrinho")]
         public async Task<IActionResult> AdicionarItem(Guid id, int quantidade)
         {
-            var produto = await _protudtoAppService.ObterPorId(id);
+            var produto = await _produtoAppService.ObterPorId(id);
 
             if (produto == null) return BadRequest();
 
@@ -55,5 +60,56 @@ namespace NerdStore.WebApp.MVC.Controllers
 
             return RedirectToAction("ProdutoDetalhe", "Vitrine", new { id });
         }
+
+        //[HttpPost]
+        //[Route("remover-item")]
+        //public async Task<IActionResult> RemoverItem(Guid id)
+        //{
+        //    var produto = await _produtoAppService.ObterPorId(id);
+        //    if (produto == null) return BadRequest();
+
+        //    var command = new RemoverItemPedidoCommand(ClienteId, id);
+        //    await _mediatorHandler.EnviarComando(command);
+
+        //    if (OperacaoValida())
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
+        //}
+
+        //[HttpPost]
+        //[Route("atualizar-item")]
+        //public async Task<IActionResult> AtualizarItem(Guid id, int quantidade)
+        //{
+        //    var produto = await _produtoAppService.ObterPorId(id);
+        //    if (produto == null) return BadRequest();
+
+        //    var command = new AtualizarItemPedidoCommand(ClienteId, id, quantidade);
+        //    await _mediatorHandler.EnviarComando(command);
+
+        //    if (OperacaoValida())
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
+        //}
+
+        //[HttpPost]
+        //[Route("aplicar-voucher")]
+        //public async Task<IActionResult> AplicarVoucher(string voucherCodigo)
+        //{
+        //    var command = new AplicarVoucherPedidoCommand(ClienteId, voucherCodigo);
+        //    await _mediatorHandler.EnviarComando(command);
+
+        //    if (OperacaoValida())
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClienteId));
+        //}
     }
 }
