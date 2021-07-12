@@ -7,13 +7,11 @@ namespace Nerdstore.Vendas.Application.Commands
     public class RemoverItemPedidoCommand : Command
     {
         public Guid ClienteId { get; }
-        public Guid PedidoId { get; }
         public Guid ProdutoId { get; }
 
-        public RemoverItemPedidoCommand(Guid clienteId, Guid pedidoId, Guid produtoId)
+        public RemoverItemPedidoCommand(Guid clienteId, Guid produtoId)
         {
             ClienteId = clienteId;
-            PedidoId = pedidoId;
             ProdutoId = produtoId;
         }
 
@@ -35,10 +33,6 @@ namespace Nerdstore.Vendas.Application.Commands
             RuleFor(c => c.ProdutoId)
                 .NotEqual(Guid.Empty)
                 .WithMessage("Id do produto inválido");
-
-            RuleFor(c => c.PedidoId)
-                .NotEqual(Guid.Empty)
-                .WithMessage("Id do pedido inválido");
         }
     }
 }

@@ -6,13 +6,11 @@ namespace Nerdstore.Vendas.Application.Commands
 {
     public class AplicarVoucherPedidoCommand : Command
     {
-        public Guid PedidoId { get; private set; }
         public Guid ClienteId { get; private set; }
         public string CodigoVoucher { get; private set; }
 
-        public AplicarVoucherPedidoCommand(Guid pedidoId, Guid clienteId, string codigoVoucher)
+        public AplicarVoucherPedidoCommand(Guid clienteId, string codigoVoucher)
         {
-            PedidoId = pedidoId;
             ClienteId = clienteId;
             CodigoVoucher = codigoVoucher;  
         }
@@ -31,10 +29,6 @@ namespace Nerdstore.Vendas.Application.Commands
             RuleFor(c => c.ClienteId)
                 .NotEqual(Guid.Empty)
                 .WithMessage("Id do cliente inválido");
-
-            RuleFor(c => c.PedidoId)
-                .NotEqual(Guid.Empty)
-                .WithMessage("Id do pedido inválido");
 
             RuleFor(c => c.CodigoVoucher)
                 .NotEmpty()
