@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using FluentValidation;
+﻿using FluentValidation;
 using NerdStore.Core.DomainObjects;
+using System;
+using System.Collections.Generic;
 
 namespace NerdStore.Vendas.Domain
 {

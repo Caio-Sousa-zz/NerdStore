@@ -1,6 +1,6 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 using NerdStore.Core.Messages;
+using System;
 
 namespace Nerdstore.Vendas.Application.Commands
 {
