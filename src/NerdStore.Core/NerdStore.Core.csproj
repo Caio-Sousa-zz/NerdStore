@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Messages\CommonMessages\IntegrationEvents\" />
+    <Folder Include="DomainObjects\DTO\" />
   </ItemGroup>
 
 </Project>

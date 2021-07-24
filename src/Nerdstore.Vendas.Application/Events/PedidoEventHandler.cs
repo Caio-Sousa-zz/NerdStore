@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using NerdStore.Vendas.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 

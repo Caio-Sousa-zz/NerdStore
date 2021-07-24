@@ -7,11 +7,13 @@ using Nerdstore.Vendas.Data.Repository;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Catalogo.Data;
 using NerdStore.Catalogo.Data.Repository;
+using NerdStore.Catalogo.Domain;
 using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Catalogo.Domain.Interface;
 using NerdStore.Catalogo.Domain.Services;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
+using NerdStore.Vendas.Application.Events;
 using NerdStore.Vendas.Application.Queries;
 using NerdStore.Vendas.Domain;
 

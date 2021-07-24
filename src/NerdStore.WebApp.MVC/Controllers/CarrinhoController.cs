@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Nerdstore.Vendas.Application.Commands;
 using NerdStore.Catalogo.Application.Services;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages.CommonMessages.Notifications;
-using Nerdstore.Vendas.Application.Commands;
 using NerdStore.Vendas.Application.Queries;
+using NerdStore.Vendas.Application.Queries.ViewModels;
+using System;
+using System.Threading.Tasks;
+using NerdStore.Vendas.Application.Commands;
 using ControllerBase = NerdStore.WebApp.MVC.Controllers.Base.ControllerBase;
 
 namespace NerdStore.WebApp.MVC.Controllers
@@ -111,6 +113,31 @@ namespace NerdStore.WebApp.MVC.Controllers
             }
 
             return View("Index", await _pedidoQueries.ObterCarrinhoCliente(ClientId));
+        }
+
+        [Route("resumo-da-compra")]
+        public async Task<IActionResult> ResumoDaCompra()
+        {
+            return View(await _pedidoQueries.ObterCarrinhoCliente(ClientId));
+        }
+
+        [HttpPost]
+        [Route("iniciar-pedido")]
+        public async Task<IActionResult> IniciarPedido(CarrinhoViewModel carrinhoViewModel)
+        {
+            var carrinho = await _pedidoQueries.ObterCarrinhoCliente(ClientId);
+
+            var command = new IniciarPedidoCommand(carrinho.PedidoId, ClientId, carrinho.ValorTotal, carrinhoViewModel.Pagamento.NomeCartao,
+                carrinhoViewModel.Pagamento.NumeroCartao, carrinhoViewModel.Pagamento.ExpiracaoCartao, carrinhoViewModel.Pagamento.CvvCartao);
+
+            await _mediatorHandler.EnviarComando(command);
+
+            if (OperacaoValida())
+            {
+                return RedirectToAction("Index", "Pedido");
+            }
+
+            return View("ResumoDaCompra", await _pedidoQueries.ObterCarrinhoCliente(ClientId));
         }
     }
 }

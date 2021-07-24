@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8E31678D-D206-4406-9813-750D0E3947FA}"
 EndProject
@@ -23,11 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.Catalogo.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.Core", "src\NerdStore.Core\NerdStore.Core.csproj", "{43100D49-7172-47BC-9087-BA058CFC3248}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16BF69A6-46D4-4D3F-8638-52FC9A3D394A}"
-	ProjectSection(SolutionItems) = preProject
-		RM.txt = RM.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0EA6717E-68C1-4DEF-AB50-B263D86BFE3B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.Catalogo.Domain.Tests", "tests\NerdStore.Catalogo.Domain.Tests\NerdStore.Catalogo.Domain.Tests.csproj", "{EAD0E393-2B66-48AF-8787-A84834394558}"
@@ -38,11 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.Catalogo.Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.WebApp.MVC", "src\NerdStore.WebApp.MVC\NerdStore.WebApp.MVC.csproj", "{ADB5D5F8-2AEB-456F-8A5D-3F1FC8ABF6C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Vendas.Domain", "src\NerdStore.Vendas.Domain\NerdStore.Vendas.Domain.csproj", "{9A767EE4-6860-45DE-A096-AF597F63A28B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NerdStore.Vendas.Domain", "src\NerdStore.Vendas.Domain\NerdStore.Vendas.Domain.csproj", "{9A767EE4-6860-45DE-A096-AF597F63A28B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nerdstore.Vendas.Application", "src\Nerdstore.Vendas.Application\Nerdstore.Vendas.Application.csproj", "{79FCB326-3446-4CC0-AAC3-C520FE60E4D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nerdstore.Vendas.Application", "src\Nerdstore.Vendas.Application\Nerdstore.Vendas.Application.csproj", "{79FCB326-3446-4CC0-AAC3-C520FE60E4D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nerdstore.Vendas.Data", "src\Nerdstore.Vendas.Data\Nerdstore.Vendas.Data.csproj", "{94DC2394-9A11-4D33-84EE-277A78784E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nerdstore.Vendas.Data", "src\Nerdstore.Vendas.Data\Nerdstore.Vendas.Data.csproj", "{94DC2394-9A11-4D33-84EE-277A78784E51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
