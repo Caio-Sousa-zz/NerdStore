@@ -43,7 +43,6 @@ namespace NerdStore.Catalogo.Domain.Events
             {
                 await _mediatorHandler.PublicarEvento(new PedidoEstoqueRejeitadoEvent(message.PedidoId, message.ClienteId));
             }
-
         }
     }
 }
