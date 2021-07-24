@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Data;
-using NerdStore.Core.DomainObjects;
 using NerdStore.Core.Messages;
 using NerdStore.Pagamentos.Business;
 using System;
@@ -47,9 +46,13 @@ namespace NerdStore.Pagamentos.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
-                e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-                property.Relational().ColumnType = "varchar(100)";
+
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetProperties()
+                    .Where(p => p.ClrType == typeof(string))))
+            {
+                property.SetColumnType("varchar(100)");
+            }
 
             modelBuilder.Ignore<Event>();
 
