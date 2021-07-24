@@ -3,4 +3,4 @@
 update-database -Context ApplicationDbContext
 
 
-Integração de BC's - Pagamento 
+Integração de BC's - Pagamento 23:09

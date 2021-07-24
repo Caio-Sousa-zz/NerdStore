@@ -1,9 +1,7 @@
-﻿using NerdStore.Core.Messages;
-using System.Collections.Generic;
+﻿using NerdStore.Core.DomainObjects;
+using NerdStore.Pagamentos.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using NerdStore.Core.DomainObjects;
-using NerdStore.Pagamentos.Data;
 
 namespace NerdStore.Core.Communication.Mediator
 {
