@@ -79,7 +79,7 @@ namespace NerdStore.WebApp.MVC.Setup
             services.AddScoped<IConfigurationManager, ConfigurationManager>();
             services.AddScoped<PagamentoContext>();
 
-             services.AddScoped<INotificationHandler<PedidoEstoqueConfirmadoEvent>, PagamentoEventHandler>();
+            services.AddScoped<INotificationHandler<PedidoEstoqueConfirmadoEvent>, PagamentoEventHandler>();
         }
     }
 }
