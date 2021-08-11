@@ -3,4 +3,4 @@
 update-database -Context ApplicationDbContext
 
 
-09:00
+Pending event store client install, can be in container.
